@@ -15,7 +15,15 @@ app.post('/user',(req, res)=>{
 app.put('/user/:id',(req, res)=>{
     const userId=req.params.id;
     const updateUser=req.body;
-    res.json({ message: `User with ID ${userId} updated`, updatedUser});
+    res.json({ message: `User with ID ${userId} updated`,
+        updateUser:req.body
+    });
+});
+
+app.patch('/user/:id',(req, res)=>{
+    const userId=req.params.id;
+    const update=req.body;
+    res.json({message:`user with id ${userId} is updated`, update:req.body})
 });
 
 app.delete('/user/:id',(req, res)=>{
@@ -23,10 +31,6 @@ app.delete('/user/:id',(req, res)=>{
     res.json({message:`user with ID ${userId} is deleted`});
 });
 
-app.patch('/user/:id',(req, res)=>{
-    const userId=req.params.id;
-    res.json({message:`user with id ${userId} is updated`})
-});
 
 app.listen(port,()=>{
     console.log('running')
